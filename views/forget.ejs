@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs") %>
+
+<style>
+	.btn-log {
+		display: none;
+	}
+	.btn-reg {
+		display: none;
+	}
+</style>
+
+<div class="login-container">
+	<h1 class="login-header">Movie Web</h1>
+	<img src="images/movie.png" class="login-logo">
+	<form action="" method="POST">
+		<div class="login-field mb-3">
+			<label class="login-detail form-label">E-mail</label>
+			<input type="email" class="login-form form-control" name="email" placeholder="Your E-mail" required>
+		</div>
+		<button type="submit" class="recovery-btn login-btn btn btn-temp">Recovery</button>
+	</form>
+</div>
+
+<%- include("partials/footer.ejs") %>

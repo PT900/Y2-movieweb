@@ -1,0 +1,78 @@
+<%- include("../partials/header.ejs") %>
+
+<section class="home-container container-fluid">
+    <div class="all-head">
+		<ul class="nav justify-content-center">
+			<li class="nav-item all-nav">
+				<a class="nav-link all-link all-filming active" id="filming-tab">Now Filming</a>
+			</li>
+			<li class="nav-item all-nav">
+				<a class="nav-link all-link all-next" id="next-tab">Next Program</a>
+			</li>
+		</ul>
+    </div>
+	<div class="home-showing">
+	<article class="home-grid row container-fluid">
+		<% movie.forEach(function(movie){ %>
+		<% if (movie.incoming !== true) { %>
+		<div class="home-movie align-top col-md-2 mb-5" id="movie-filming">
+			<% if (currentUser && currentUser.isAdmin === true) { %>
+				<div class="home-admin d-flex mb-2">
+					<a class="home-edit text-decoration-none btn btn-warning me-2" role="button" href="/movie/<%= movie._id %>/edit">Edit</a>
+					<form action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
+						<button class="home-delete text-decoration-none btn btn-danger ms-2" id="delete-con" type="submit">Delete</button>
+					</form>
+				</div>
+			<% } %>
+			<div class="home-overlay-container">
+				<img class="home-thumb" src="<%= movie.thumbnail %>">
+				<div class="home-overlay">
+					<a class="btn btn-overlay-detail d-flex align-items-center justify-content-center" type="button" href="/movie/<%= movie._id %>">Details</a>
+					<a class="btn btn-overlay-buy d-flex align-items-center justify-content-center" id="toastr-noti" type="button" href="#">Buy Ticket</a>
+				</div>
+			</div>
+			<p class="home-movie-date"><%= moment(movie.date).format("DD MMM YY") %></p>
+			<p class="home-movie-name"><%= movie.name %></p>
+		</div>
+		<% } %>
+		<% }); %>
+	</article>
+	</div>
+	<div class="home-next">
+	<article class="home-grid row container-fluid">
+		<% movie.forEach(function(movie){ %>
+		<% if (movie && movie.incoming === true) { %>
+		<div class="home-movie align-top col-md-2 mb-5" id="movie-next">
+			<% if (currentUser && currentUser.isAdmin === true) { %>
+				<div class="home-admin d-flex mb-2">
+					<a class="home-edit text-decoration-none btn btn-warning me-2" role="button" href="/movie/<%= movie._id %>/edit">Edit</a>
+					<form action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
+						<button class="home-delete text-decoration-none btn btn-danger ms-2" id="delete-con" type="submit">Delete</button>
+					</form>
+				</div>
+			<% } %>
+			<div class="home-overlay-container">
+				<img class="home-thumb" src="<%= movie.thumbnail %>">
+				<div class="home-overlay">
+					<a class="btn btn-overlay-detail btn-incoming d-flex align-items-center justify-content-center" type="button" href="/movie/<%= movie._id %>">Details</a>
+					<!-- <a class="btn btn-overlay-buy d-flex align-items-center justify-content-center" id="toastr-noti" type="button" href="#">Buy Ticket</a> -->
+				</div>
+			</div>
+			<p class="home-movie-date"><%= moment(movie.date).format("DD MMM YY") %></p>
+			<p class="home-movie-name"><%= movie.name %></p>
+		</div>
+		<% } %>
+		<% }); %>
+	</article>
+	</div>
+</section>
+
+<script>
+	$(".home-next").hide();
+	$(".all-link").click(function() {
+		$("#next-tab, #filming-tab").toggleClass("active");
+		$(".home-next, .home-showing").toggle("slow");
+	});
+</script>
+
+<%- include("../partials/footer.ejs") %>

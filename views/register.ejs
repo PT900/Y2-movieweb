@@ -1,0 +1,45 @@
+<%- include("partials/header.ejs") %>
+
+<style>
+	.btn-log, .btn-reg {
+		display: none;
+	}
+</style>
+
+<div class="login-container">
+	<h1 class="login-header">Movie Web</h1>
+	<img src="images/movie.png" class="login-logo">
+	<form action="/register" method="POST">
+		<div class="login-field mb-3">
+			<label class="form-label">First Name</label>
+			<input type="text" class="login-form form-control" id="reg-focus" name="firstname" placeholder="Your First Name" required>
+		</div>
+		<div class="login-field mb-3">
+			<label class="form-label">Last Name</label>
+			<input type="text" class="login-form form-control" name="lastname" placeholder="Your Last Name" required>
+		</div>
+		<div class="login-field mb-3">
+			<label class="form-label">Username</label>
+			<input type="text" class="login-form form-control" name="username" placeholder=" Your Username" required>
+		</div>
+		<div class="login-field mb-3">
+			<label class="form-label">Password</label>
+			<input type="password" class="login-form form-control" name="password" placeholder="Your Password" required>
+		</div>
+		<!-- <div class="login-field mb-3">
+			<label class="form-label">Admin Code</label>
+			<input type="text" class="login-form form-control" name="admincode" placeholder="Admin Code">
+		</div> -->
+		<div class="login-field mb-3">
+			<label class="form-label">E-mail</label>
+			<input type="email" class="login-form form-control" name="email" placeholder="Yourmail@example.com" required>
+		</div>
+		<button type="submit" class="signup-btn login-btn btn btn-temp">Sign Up</button>
+	</form>
+</div>
+
+<script>
+	$("#reg-focus").focus();
+</script>
+
+<%- include("partials/footer.ejs") %>

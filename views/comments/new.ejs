@@ -1,0 +1,31 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="comment-container row">
+    <div class="comment-movie-detail mx-auto col d-flex align-items-center justify-content-center">
+        <div class="comment-temp">
+            <img src="<%= movie.thumbnail %>" class="movie-thumb me-0">
+            <p class="comment-movie-name"><%= movie.name %> </p>
+        </div>
+    </div>
+    <div class="col-8">
+        <p class="comment-rating-title">Your Rating</p>
+        <form action="/movie/<%= movie._id %>/comments" method="POST">
+            <div class="comment-rating-box">
+                <input type="number" id="input-1" name="comment[score]" class="rating-loading">
+            </div>
+            <div class="mb-3 comment-review-zone">
+                <label class="form-label comment-review-title">Your Review</label>
+                <textarea rows="3" cols="20" wrap="hard" type="text" class="form-control comment-input" name="comment[text]" placeholder="Your comment"></textarea>
+            </div>
+            <button type="submit" class="btn movie-show-btn theater-btn comment-btn mt-3">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#input-1').rating({min: 0, max: 10, step: 1, stars: 10});
+    });
+</script>
+
+<%- include("../partials/footer.ejs") %>

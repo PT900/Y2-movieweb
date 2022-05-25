@@ -1,0 +1,60 @@
+<%- include("../partials/header.ejs") %>
+
+<section class="theater-container">
+    <h1 class="theater-header mb-5">Theater</h1>
+    <article>
+		<% movie.forEach(function(movie){ %>
+		<% if (movie.incoming !== true) { %>
+		<div class="theater-movie mb-5">
+			<div class="home-overlay-container">
+				<img class="home-thumb" src="<%= movie.thumbnail %> ">
+			</div>
+			<p class="theater-movie-name"><%= movie.name %></p>
+            <div class="col-100 movie-temp-box">
+                <span class="theater-detail-title">Genre: </span>
+                <% movie.genres.forEach(function(genre, key){ %>
+                    <% if (Object.is(movie.genres.length - 1, key)) { %> 
+                        <span class="theater-genre"><%= genre %></span>
+                    <% } else { %>
+                        <span class="theater-genre"><%= genre %> /</span>
+                    <% } %> 
+                <% }); %>
+            </div>
+            <div class="col-12 movie-temp-box">
+                <span class="theater-detail-title">Length:</span>
+                <span class="theater-length"> <%= movie.length_hour %> hr <%= movie.length_min %> min</span>
+            </div>
+            <div class="theater-detail-container">
+                <span class="theater-detail">Theater 1</span>
+                <span class="theater-detail ms-2 me-2">|</span>
+                <img class="theater-detail-icon align-top" src="/images/speaker.png">
+                <span class="theater-detail">EN / TH</span>
+            </div>
+            <div class="theater-time-container row">
+                <div class="w-100 col-3">
+                    <a class="btn movie-show-btn theater-btn disabled" href="/branch/theater/seat" disabled>11:30 AM</a>
+                    <a class="btn movie-show-btn theater-btn" href="/branch/theater/seat">1:30 PM</a>
+                    <a class="btn movie-show-btn theater-btn" href="/branch/theater/seat">3:30 PM</a>
+                    <a class="btn movie-show-btn theater-btn" href="/branch/theater/seat">5:30 PM</a>
+                </div>
+            </div>
+            <div class="theater-detail-container">
+                <span class="theater-detail">Theater 2</span>
+                <span class="theater-detail ms-2 me-2">|</span>
+                <img class="theater-detail-icon align-top" src="/images/speaker.png">
+                <span class="theater-detail">TH / --</span>
+            </div>
+            <div class="theater-time-container row">
+                <div class="w-100 col-3">
+                    <a class="btn movie-show-btn theater-btn" href="/branch/theater/seat">1:30 PM</a>
+                    <a class="btn movie-show-btn theater-btn" href="/branch/theater/seat">3:30 PM</a>
+                    <a class="btn movie-show-btn theater-btn" href="/branch/theater/seat">5:30 PM</a>
+                </div>
+            </div>
+		</div>
+		<% } %>
+		<% }); %>
+    </article>
+</section>
+
+<%- include("../partials/footer.ejs") %>

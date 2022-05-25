@@ -1,0 +1,16 @@
+<%- include("../partials/header.ejs") %>
+
+<section class="profile-container">
+    <article class="profile-zone">
+        <img class="profile-image col-md-1 offset-md-1" src="/<%= user.profileimage %>">
+        <span class="profile-name"><%= user.firstname + " " + user.lastname + " (" + user.username + ")" %></span>
+    </article>
+    <article class="profile-likelist-zone offset-md-1">
+        <span class="profile-likelist-head">Your Like Lists</span>
+        <div class="profile-likelist-box">
+            
+        </div>
+    </article>
+</section>
+
+<%- include("../partials/footer.ejs") %>

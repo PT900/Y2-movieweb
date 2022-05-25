@@ -1,0 +1,24 @@
+<%- include("../partials/header.ejs") %>
+
+<section class="home-container container-fluid">
+    <h1 class="search-header mt-5 mb-5">Search results</h1>
+    <article class="home-grid row container-fluid">
+    <% movie.forEach(function(movie){ %>
+		<div class="home-movie align-top col-md-2 mb-5">
+			<div class="home-overlay-container">
+				<img class="home-thumb" src="<%= movie.thumbnail %>">
+				<div class="home-overlay">
+					<a class="btn btn-overlay-detail btn-incoming d-flex align-items-center justify-content-center" type="button" href="/movie/<%= movie._id %>">Details</a>
+					<% if (movie.incoming !== true) { %>
+					<a class="btn btn-overlay-buy d-flex align-items-center justify-content-center" id="toastr-noti" type="button" href="#">Buy Ticket</a>
+					<% } %>
+				</div>
+			</div>
+            <p class="search-movie-name col"><%= movie.name %></p>
+            <p class="search-movie-date col"><%= moment(movie.date).format("DD MMM YY") %></p>
+		</div>
+		<% }); %>
+	</article>
+</section>
+
+<%- include("../partials/footer.ejs") %>

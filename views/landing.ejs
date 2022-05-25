@@ -1,0 +1,64 @@
+<%- include("partials/header.ejs") %>
+
+<div id="carouselExampleIndicators" class="home-carousel carousel slide" data-bs-ride="carousel">
+	<div class="carousel-indicators">
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+			aria-current="true" aria-label="Slide 1"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+			aria-label="Slide 2"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+			aria-label="Slide 3"></button>
+	</div>
+	<div class="carousel-inner">
+		<div class="home-banner carousel-item active">
+			<img src="/images/banner1.jpg" class="d-block w-100" alt="banner1">
+		</div>
+		<div class="home-banner carousel-item">
+			<img src="/images/banner2.jpg" class="d-block w-100" alt="banner2">
+		</div>
+		<div class="home-banner carousel-item">
+			<img src="/images/banner3.jpg" class="d-block w-100" alt="banner3">
+		</div>
+	</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+			data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+			data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+</div>
+<section class="home-container container-fluid">
+	<p class="home-head mt-5 ms-4 mb-4">Now Filming</p>
+	<article class="home-grid row container-fluid">
+		<% movie.forEach(function(movie){ %>
+		<% if (movie.incoming !== true) { %>
+		<div class="home-movie align-top col-md-2 mb-5">
+			<% if (currentUser && currentUser.isAdmin === true) { %>
+				<div class="home-admin d-flex mb-2">
+					<a class="home-edit text-decoration-none btn btn-warning me-2" role="button" href="/movie/<%= movie._id %>/edit">Edit</a>
+					<form action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
+						<button class="home-delete text-decoration-none btn btn-danger ms-2" id="delete-con" type="submit">Delete</button>
+					</form>
+				</div>
+			<% } %>
+			<div class="home-overlay-container">
+				<img class="home-thumb" src="<%= movie.thumbnail %> ">
+				<div class="home-overlay">
+					<a class="btn btn-overlay-detail d-flex align-items-center justify-content-center" type="button" href="/movie/<%= movie._id %>">Details</a>
+					<a class="btn btn-overlay-buy d-flex align-items-center justify-content-center" type="button" href="/branch">Buy Ticket</a>
+				</div>
+			</div>
+			<p class="home-movie-date"><%= moment(movie.date).format("DD MMM YY") %></p>
+			<p class="home-movie-name"><%= movie.name %></p>
+		</div>
+		<% } %>
+		<% }); %>
+	</article>
+</section>
+
+<%- include("partials/footer.ejs") %>

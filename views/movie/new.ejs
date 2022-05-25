@@ -1,0 +1,85 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="new-container">
+<h1 class="new-header">Add your new movie</h1>
+<form action="/movie" method="POST" enctype="multipart/form-data">
+<div class="mb-3">
+    <label class="form-label">Movie name</label>
+    <input type="text" class="form-control" name="movie[name]" placeholder="Movie name">
+</div>
+<div class="mb-3">
+    <label class="form-label">Movie Date</label><br>
+    <input type="date" class="" name="movie[date]">
+</div>
+<div class="mb-3">
+    <label class="form-label">Movie Length (max: 3/60)</label><br>
+    <input type="number" min="0" max="3" name="movie[length_hour]" placeholder="hour">
+    <input type="number" min="0" max="60" name="movie[length_min]" placeholder="minute">
+</div>
+<div class="mb-3 row">
+    <label class="form-label">Movie Genre</label><br>
+    <div class="w-75">
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Action">Action</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Adventure">Adventure</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Comedy">Comedy</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Crime">Crime</label>
+    </div>
+    <div class="w-75 mt-2">
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Drama">Drama</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Fantasy">Fantasy</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Historical">Historical</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Horror">Horror</label>
+    </div>
+    <div class="w-75 mt-2">
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Mystery">Mystery</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Romance">Romance</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Satire">Satire</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Science Fiction">Science Fiction</label>
+    </div>
+    <div class="w-75 mt-2">
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Speculative">Speculative</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[genres]" value="Thriller">Thriller</label>
+    </div>
+</div>
+<div class="mb-3">
+    <label class="form-label">Thumbnail</label>
+    <input type="file" id="file-upload" class="form-control" name="thumbnail" accept='image/*' onchange="showPreview(event);">
+</div>
+<div class="mb-3 new-preview">
+    <img id="file-upload-preview" style="max-width: 200px;">
+</div>
+<div class="mb-3">
+    <label class="form-label">Youtube embeded link</label>
+    <input type="text" class="form-control" name="movie[trailer]" placeholder="e.g. https://www.youtube.com/embed/xxxxxxxxxx">
+</div>
+<div class="mb-3">
+    <label class="form-label">Sypnosis</label>
+    <input type="text" class="form-control" name="movie[description]" style="padding-bottom: 100px" placeholder="description here...">
+</div>
+<div class="mb-3">
+    <label class="form-check-label"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[incoming]" value=true>Next Program</label>
+</div>
+<div class="mb-3 row">
+    <label class="form-label">Movie Branch</label><br>
+    <div class="w-75 mt-2">
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[branch1]" value=true>Branch 1</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[branch2]" value=true>Branch 2</label>
+        <label class="form-check-label col-2"><input type="checkbox" role="button" class="form-check-input me-2" name="movie[branch3]" value=true>Branch 3</label>
+    </div>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<a href="/" style="margin-left: 20px;">Go back</a>
+</form>
+</div>
+
+<script>
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("file-upload-preview");
+            preview.src = src;
+        }
+    }
+</script>
+
+<%- include("../partials/footer.ejs") %>

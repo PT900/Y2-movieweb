@@ -1,0 +1,57 @@
+<%- include("../partials/header.ejs") %>
+
+<article class="review-movie mt-5">
+    <div class="d-flex align-items-center justify-content-center">
+        <img src="<%= movie.thumbnail %>" class="movie-thumb review-all-thumb"><br>
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+        <p class="movie-name align-top review-all-name"><%= movie.name %></p>
+    </div>
+</article>
+<article class="review-zone review-all-container mx-auto">
+    <div class="rating-container d-flex align-items-center">
+        <span class="review-rating">Rating: </span>
+        <img src="/images/staraa.png" class="rating-icon">
+        <span class="rating-score">8.4 / 10</span>
+    </div>
+    <div class="review-container">
+        <div class="review-head-container">
+            <span class="review-head">Review</span>
+            <a class="review-add-head text-decoration-none" href="/movie/<%= movie._id %>/comments/new">+ Review</a>
+        </div>
+        <div class="review-comment-container mb-5 d-flex justify-content-center">
+            <div class="d-inline align-items-baseline">
+                <span class="review-user">Temp</span>
+                <span class="review-score">8 / 10</span>
+                <img src="/images/staraa.png" class="review-icon">
+                <p class="review-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam modi ipsa suscipit assumenda ullam, delectus, non voluptate illum veniam nostrum natus quae error saepe tempore consectetur similique perspiciatis, vitae nihil!</p>
+            </div>
+        </div>
+        <% movie.comments.forEach(function(comment){ %> 
+        <% if (currentUser && comment.author.id.equals(currentUser._id) || (currentUser &&  currentUser.isAdmin)) { %>
+        <div class="dropdown review-dropdown">
+            <a id="imageDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-ellipsis review-more-icon"></i>
+            </a>
+            <ul class="nav-drop-menu dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/movie/<%= movie._id %>/comments/<%= comment._id %>/edit">Edit</a></li>
+                <form action="/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                    <li><a class="dropdown-item" href="/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=DELETE">Delete</a></li>
+                </form>
+            </ul>
+        </div>
+        <% } %>
+        <div class="review-comment-container mb-5">
+            <div class="d-inline align-items-baseline">
+                <span class="review-user"><%= comment.author.username %> </span>
+                <span class="review-score"><%= comment.score %> / 10</span>
+                <img src="/images/staraa.png" class="review-icon">
+                <p class="review-content"><%= comment.text %> </p>
+            </div>
+        </div>
+        <% }); %>
+    <!-- <a class="review-more text-decoration-none" href="/movie/<%= movie._id %>/comments/all">More Review ></a> -->
+    </div>
+</article>
+
+<%- include("../partials/footer.ejs") %>

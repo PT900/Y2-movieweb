@@ -1,0 +1,696 @@
+/* Overall */
+* {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+	background-color: rgb(23, 23, 23);
+	color: white;
+}
+
+/* Navbar */
+.navbar {
+	background-color: rgb(68, 68, 68);
+	padding-left: 20px;
+	padding-right: 20px;
+	z-index: 5;
+}
+
+.nav-item-list {
+	color: white;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.nav-link-ex {
+	text-decoration: none;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.search-icon {
+	scale: 1.2;
+	margin-right: -30px;
+	margin-top: 10px;
+}
+
+.search-container {
+	margin-left: 20px;
+}
+
+.search-form-control {
+	width: 500px;
+	padding-left: 40px;
+	border: none;
+	color: white;
+	background-color: rgba(255, 255, 255, 0.08);
+}
+
+.search-form-control::placeholder {
+	width: 500px;
+	color: white;
+}
+
+.search-form-control:focus {
+	width: 500px;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: white;
+}
+
+.search-form-control:focus::placeholder {
+	color: lightgrey;
+}
+
+.nav-username {
+	margin-bottom: 0;
+	margin-right: 30px;
+}
+
+.nav-drop-menu {
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 10;
+}
+
+.dropdown-item {
+	color: white;
+	text-align: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: 100px;
+}
+
+/* Homepage */
+.home-container {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.home-head {
+	font-size: 3rem;
+}
+
+.home-carousel {
+	z-index: 1;
+}
+
+.carousel-indicators button {
+	width: 10px!important;
+	height: 10px!important;
+	border-radius: 50%;
+}
+
+.home-banner {
+	height: 300px;
+}
+
+.home-movie {
+	font-size: 1.1rem;
+}
+
+.home-thumb {
+	height: 280px;
+	width: 190px;
+	border-radius: 5px;
+}
+
+.home-overlay-container {
+	position: relative;
+	width: 100%;
+}
+
+.home-overlay {
+	position: absolute;
+	bottom: 0;
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+	width: 190px;
+	height: 280px;
+	border-radius: 5px;
+	transition: .25s ease;
+	opacity: 0;
+	text-align: center;
+}
+
+.home-overlay-container:hover .home-overlay {
+	opacity: 1;
+}
+
+.btn-overlay-detail {
+	display: block;
+	position: relative;
+	height: 15%;
+	width: 60%;
+	background-color: white;
+	color: black;
+	top: 30%!important;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.btn-incoming {
+	top: 40%;
+}
+
+.btn-overlay-buy {
+	display: block;
+	position: relative;
+	height: 15%;
+	width: 60%;
+	background-color: rgb(218, 0, 55);
+	color: white;
+	top: 40%!important;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.btn-overlay-buy:hover {
+	color: white;
+}
+
+.home-movie-name {
+	font-weight: bold;
+	max-width: 18ch;
+}
+
+.btn-temp {
+	color: white;
+	background-color: rgb(218, 0, 55);
+	margin-left: 20px;
+	flex: none;
+}
+
+/* Login & Register */
+.login-form {
+	display: inline;
+	background-color: white;
+	height: 50px;
+}
+
+.login-field {
+	position: relative;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 40%;
+}
+
+.login-header {
+	text-align: center;
+	font-size: 5rem;
+	margin-top: 50px;
+}
+
+.login-logo {
+	display: block;
+	width: 100px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login-detail {
+	font-size: larger;
+}
+
+.login-btn {
+	display: block;
+	margin-top: 20px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login-helper {
+	position: relative;
+	right: 30%;
+	text-align: right;
+}
+
+.login-helper-menu {
+	text-decoration: none;
+	font-size: small;
+	margin-left: 10px;
+}
+
+.signup-btn, .recovery-btn {
+	margin-top: 60px;
+}
+
+/* Profile page */
+.profile-container {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.profile-zone {
+	margin-top: 90px;
+}
+
+.profile-image {
+	height: 200px;
+	width: auto;
+}
+
+.profile-name {
+	position: relative;
+	font-size: 2.5rem;
+	left: 50px;
+	bottom: 40px;
+}
+
+.profile-likelist-zone {
+	margin-top: 90px;
+}
+
+.profile-likelist-head {
+	color: rgb(255, 168, 0);
+	font-size: 2rem;
+}
+
+.profile-likelist-box {
+	border-radius: 15px;
+	height: 20rem;
+	background-color: rgba(0, 0, 0, 0.5);
+	margin-top: 30px;
+}
+
+/* New movie page */
+.new-container {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.new-header {
+	margin-top: 50px;
+}
+
+/* Movie page */
+.movie-trailer {
+	margin-top: 50px;
+	width: 100%;
+	height: 480px;
+	background-color: rgb(0, 0, 0);
+}
+
+.movie-trailer iframe {
+	height: 100%;
+	width: 90%;
+}
+
+.movie-container {
+	position: relative;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 60px;
+}
+
+.movie-detail {
+	margin-bottom: 30vh;
+}
+
+.movie-detail-title {
+	color: rgb(255, 168, 0);
+	font-size: 1.25rem;
+}
+
+.movie-thumb {
+	height: 250px;
+	width: auto;
+	margin-right: 40px;
+	border-radius: 5px;
+}
+
+.movie-name {
+	font-size: 3.5rem;
+	font-weight: bold;
+	max-width: 60ch;
+}
+
+.movie-genre, .movie-length, .movie-syp {
+	font-size: 1.25rem;
+}
+
+.movie-temp-box {
+	margin-top: 10px;
+}
+
+.movie-show-btn {
+	background-color: rgb(218, 0, 55);
+	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 20px;
+	margin-right: 20px;
+}
+
+.movie-syp-head {
+	position: relative;
+	top: 25px;
+	font-size: 1.75rem;
+	color:rgb(255, 168, 0);
+}
+
+.movie-syp {
+	position: relative;
+	top: 25px;
+	width: 60%;
+}
+
+.movie-like {
+	cursor: pointer;
+	height: 30px;
+	width: auto;
+	margin-top: 20px;
+}
+
+.rating-container {
+	margin-bottom: 15vh;
+}
+
+.rating-icon {
+	height: 25px;
+	width: auto;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.review-container {
+	width: 70%;
+}
+
+.review-rating, .review-head {
+	color:rgb(255, 168, 0);
+	font-size: 1.75rem;
+}
+
+.rating-score, .review-add-head {
+	font-size: 1.75rem;
+}
+
+.review-head-container {
+	margin-bottom: 15px;
+}
+
+.review-add-head {
+	cursor: pointer;
+	color: rgb(0, 148, 255);
+	float: right;
+}
+
+.review-comment-container {
+	background-color: rgba(13, 13, 13, 0.8);
+	padding: 5%;
+	margin: auto;
+	border: 1px solid white;
+	border-radius: 10px;
+}
+
+.review-user {
+	color: rgb(255, 168, 0);
+	font-size: 1.25rem
+}
+
+.review-icon {
+	width: 15px;
+	height: 15px;
+	float: right;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 6px;
+}
+
+.review-dropdown {
+	float: right;
+}
+
+.review-more-icon {
+	position: relative;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+}
+
+.review-score {
+	font-size: 1.25rem;
+	float: right;
+}
+
+.review-content {
+	line-height: 5ch;
+	margin-top: 20px;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+
+.review-more {
+	color: rgb(255, 168, 0);
+	width: fit-content;
+	font-size: 1.25rem;
+	float: right;
+	margin-top: 15px;
+	cursor: pointer;
+	margin-top: -30px;
+}
+
+/* All review page */
+.review-all-container {
+	width: 90%;
+	position: relative;
+	top: 15vh;
+}
+
+.review-all-thumb {
+	height: 300px;
+	margin-bottom: 20px;
+}
+
+.review-all-name {
+	font-size: 3rem;
+	max-width: 30ch;
+}
+
+/* All movie page */
+.all-head {
+	margin-top: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 2.25rem;
+}
+
+.all-filming, .all-next {
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.all-link {
+	color:rgb(131, 131, 131);
+}
+
+.all-nav > .active {
+	color: white;
+	pointer-events: none;
+}
+
+.all-link:hover, .all-link:focus {
+	color: white;
+}
+
+/* Branch page */
+.branch-container {
+	position: relative;
+	top: 20vh;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 450px;
+}
+
+.branch-btn {
+	display: block;
+	flex: none;
+	border: 1px solid black;
+	padding: 50px;
+	border-radius: 5px;
+	background-color: rgba(0, 0, 0, 0.2);
+	color: rgb(201, 201, 201);
+	font-size: 2rem;
+}
+
+.branch-btn:hover {
+	background-color: rgba(100, 100, 100, 0.2);
+	color: white;
+}
+
+.branch-icon {
+	transform: scale(1.5);
+	margin-bottom: 20px;
+}
+
+/* Theater page */
+.theater-container {
+	width: 85%;
+	position: relative;
+	top: 15vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.theater-header {
+	font-size: 4rem;
+}
+
+.theater-movie {
+	width: fit-content;
+}
+
+.theater-movie-name {
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+.theater-detail-title {
+	color:rgb(255, 168, 0);
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.theater-detail-container {
+	margin-top: 10px;
+}
+
+.theater-detail {
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+.theater-btn {
+	width: 100px;
+}
+
+.theater-detail-icon {
+	width: 30px;
+}
+
+.btn.disabled {
+	background-color: rgb(68, 68, 68);
+	color: white;
+}
+
+/* Seat page */
+.seat-container {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.seat-screen {
+	width: 60%;
+	background-color: black;
+	border: 1px solid white;
+	margin-bottom: 90px;
+}
+
+.seat-icon-avaliable {
+	width: 50px;
+	cursor: pointer;
+}
+
+.seat-icon-selected {
+	position: absolute;
+	width: 30px;
+}
+
+.seat-row {
+	position: absolute;
+	font-size: 2rem;
+	left: 2%;
+}
+
+.seat-price-container {
+	position: relative;
+	top: 50%;
+	background-color: rgba(0, 0, 0, 0.3);
+	width: fit-content;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.seat-price-normal, .seat-price-premium {
+	position: absolute;
+	right: 2%;
+}
+
+.seat-price-normal {
+	top: 35%;
+}
+
+.seat-price-premium {
+	top: 55%;
+}
+
+/* Comment page */
+.comment-container {
+	position: relative;
+	padding-top: 15vh;
+	padding-bottom: 15vh;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.comment-temp {
+	width: fit-content;
+	text-align: center;
+}
+
+.comment-movie-detail {
+	width: 75%;
+}
+
+.comment-movie-name {
+	font-size: 1.5rem;
+	margin-top: 15px;
+	max-width: 20ch;
+}
+
+.comment-rating-title, .comment-review-title {
+	font-size: 1.5rem;
+}
+
+.comment-input {
+	width: 90%;
+	padding-bottom: 150px;
+}
+
+.comment-review-zone {
+	margin-top: -15vh;
+}
+
+.comment-btn {
+	position: relative;
+	margin: 0;
+	left: 36%;
+}
+
+/* Footer */
+footer {
+	margin-top: 20%;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+tr td {
+	color: white;
+}

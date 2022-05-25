@@ -1,0 +1,90 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="movie-trailer d-flex align-items-center justify-content-center">
+    <iframe width="1520" height="658" src="<%= movie.trailer %>?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<section class="movie-container">
+    <article class="movie-detail">
+        <div class="row">
+            <img src="<%= movie.thumbnail %>" class="movie-thumb">
+            <div class="col-8">
+                <% if (currentUser && currentUser.isAdmin === true) { %>
+                    <div class="home-admin d-flex mb-2">
+                        <a class="home-edit text-decoration-none btn btn-warning me-2" role="button" href="/movie/<%= movie._id %>/edit">Edit</a>
+                        <form action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
+                            <button class="home-delete text-decoration-none btn btn-danger ms-2">Delete</button>
+                        </form>
+                    </div>
+                <% } %>
+                <span class="movie-name align-top row"><%= movie.name %></span>
+                <div class="col-100 movie-temp-box">
+                    <span class="movie-detail-title">Genre: </span>
+                    <% movie.genres.forEach(function(genre, key){ %>
+                        <% if (Object.is(movie.genres.length - 1, key)) { %> 
+                            <span class="movie-genre"><%= genre %></span>
+                        <% } else { %>
+                            <span class="movie-genre"><%= genre %> /</span>
+                        <% } %> 
+                    <% }); %>
+                </div>
+                <div class="col-12 movie-temp-box">
+                    <span class="movie-detail-title">Length:</span>
+                    <span class="movie-length"> <%= movie.length_hour %> hr <%= movie.length_min %> min</span>
+                </div>
+                <% if (movie.incoming !== true) { %>
+                <a class="btn movie-show-btn" href="/branch">Showtime</a>
+                <% } %>
+                <img src="/images/unheart.png" class="movie-like" name="like[state]" type="submit">
+            </div>
+            <p class="movie-syp-head"">Sypnosis</p>
+            <p class="movie-syp"><%= movie.description %></p>
+        </div>
+    </article>
+    <article class="review-zone">
+        <div class="rating-container d-flex align-items-center">
+            <span class="review-rating">Rating: </span>
+            <img src="/images/staraa.png" class="rating-icon">
+            <span class="rating-score">8.4 / 10</span>
+        </div>
+        <div class="review-container">
+            <div class="review-head-container">
+                <span class="review-head">Review</span>
+                <a class="review-add-head text-decoration-none" href="/movie/<%= movie._id %>/comments/new">+ Review</a>
+            </div>
+            <div class="review-comment-container mb-5">
+                <div class="d-inline align-items-baseline">
+                    <span class="review-user">Temp</span>
+                    <span class="review-score">8 / 10</span>
+                    <img src="/images/staraa.png" class="review-icon">
+                    <p class="review-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam modi ipsa suscipit assumenda ullam, delectus, non voluptate illum veniam nostrum natus quae error saepe tempore consectetur similique perspiciatis, vitae nihil!</p>
+                </div>
+            </div>
+            <% movie.comments.forEach(function(comment){ %> 
+            <% if (currentUser && comment.author.id.equals(currentUser._id) || (currentUser &&  currentUser.isAdmin)) { %>
+            <div class="dropdown review-dropdown">
+                <a id="imageDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-ellipsis review-more-icon"></i>
+                </a>
+                <ul class="nav-drop-menu dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="/movie/<%= movie._id %>/comments/<%= comment._id %>/edit">Edit</a></li>
+                    <form action="/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                        <li><a class="dropdown-item" href="/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=DELETE">Delete</a></li>
+                    </form>
+                </ul>
+            </div>
+            <% } %>
+            <div class="review-comment-container mb-5">
+                <div class="d-inline align-items-baseline">
+                    <span class="review-user"><%= comment.author.username %> </span>
+                    <span class="review-score"><%= comment.score %> / 10</span>
+                    <img src="/images/staraa.png" class="review-icon">
+                    <p class="review-content"><%= comment.text %> </p>
+                </div>
+            </div>
+            <% }); %>
+        <a class="review-more text-decoration-none" href="/movie/<%= movie._id %>/comments/all">More Review ></a>
+        </div>
+    </article>
+</section>
+
+<%- include("../partials/footer.ejs") %>

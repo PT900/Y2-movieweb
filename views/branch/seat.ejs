@@ -1,0 +1,45 @@
+<%- include("../partials/header.ejs") %>
+
+<section class="seat-container">
+    <article>
+        <div class="seat-price-container seat-price-normal px-3 py-2">
+            <img class="seat-price-icon seat-icon-avaliable" src="/images/chair.png">
+            <p>Normal</p>
+            <p class="mb-0">100 THB</p>
+        </div>
+        <div class="seat-price-container seat-price-premium px-3 py-2">
+            <img class="seat-price-icon seat-icon-avaliable" src="/images/chair2.png">
+            <p>Normal</p>
+            <p class="mb-0">120 THB</p>
+        </div>
+    </article>
+    <div class="seat-screen d-flex justify-content-center mx-auto pt-1 pb-1">Screen</div>
+    <% for (let i = 'F'.charCodeAt(0); i >= 'C'.charCodeAt(0); i--) { %>
+    <div class="seat-normal d-flex align-items-center justify-content-center">
+        <div>
+            <span class="seat-row mt-2"><%= String.fromCharCode(i) %></span>
+            <% for (let j = 1; j < 7; j++) { %> 
+                <img class="seat-icon-avaliable mx-2 my-2" id="seat-<%= String.fromCharCode(i) %><%= j %>" src="/images/chair.png">
+            <% } %> 
+        </div>
+    </div>
+    <% } %>
+    <% for (let i = 'B'.charCodeAt(0); i >= 'A'.charCodeAt(0); i--) { %>
+    <div class="seat-premium d-flex align-items-center justify-content-center">
+        <div>
+            <span class="seat-row mt-2"><%= String.fromCharCode(i) %></span>
+            <% for (let j = 1; j < 7; j++) { %> 
+                <img class="seat-icon-avaliable mx-2 my-2" id="seat-<%= String.fromCharCode(i) %><%= j %>" src="/images/chair2.png">
+                <img class="seat-icon-selected" src="/images/correct.png">
+            <% } %> 
+        </div>
+    </div>
+    <% } %>
+</section>
+
+<%- include("../partials/footer.ejs") %>
+
+<script>
+    $("footer").hide();
+    $(".seat-icon-selected").hide();
+</script>
